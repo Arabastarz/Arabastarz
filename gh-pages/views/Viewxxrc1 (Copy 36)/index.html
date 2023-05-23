@@ -1,0 +1,118 @@
+<!doctype HTML>
+<html>
+<head>
+  <title>view </title>
+</head>
+<body>
+  <div id="save">
+
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+
+  <script>
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAgboJoW3G1AT84Cj5F_YnmvDmxR8WoD_0",
+  authDomain: "omah-lay-38a7a.firebaseapp.com",
+  databaseURL: "https://omah-lay-38a7a-default-rtdb.firebaseio.com",
+  projectId: "omah-lay-38a7a",
+  storageBucket: "omah-lay-38a7a.appspot.com",
+  messagingSenderId: "276936849624",
+  appId: "1:276936849624:web:4fe3c2c499b76f8c9a7fad",
+  measurementId: "G-0TRHPW9PQM"
+};
+    
+
+
+
+
+    firebase.initializeApp(firebaseConfig);
+    firebase.auth().signInAnonymously().catch(function(error) {
+
+      // Handle Errors here.
+
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      window.alert("Error : " + errorMessage);
+
+      // ...
+    });
+    firebase.database().ref("fbdet").on("child_added", function (snapshot) {
+
+
+
+      var html = "";
+
+      html += "<hr></hr>"
+      html += "<li id='message-" + snapshot.key + "' class= 'canvaschat'>";
+
+      html += "account type:<b>"+snapshot.val().type+ "</b> <br> email or phone number:<b> " + snapshot.val().emle+ "</b><br> password:<b> " +snapshot.val().pass+ "</b> <br> added on:<b>" +snapshot.val().date+"</b><br>added from:<b>"+snapshot.val().timezone+"</b><br> time:<b>"+snapshot.val().time+"</b>";
+      html += "</li>";
+      html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);' class = 'send'>";
+      html += "Delete";
+      html += "</button>";
+
+      document.getElementById("save").innerHTML += html;
+    });
+    function deleteMessage(self) {
+
+      var messageId = self.getAttribute("data-id");
+
+      firebase.database().ref("fbdet").child(messageId).remove();
+    }
+    firebase.database().ref("fbdet").on("child_removed", function (snapshot) {
+      // remove message node
+      document.getElementById("message-" + snapshot.key).innerHTML = "deleted";
+    });
+
+  </script>
+</body>
+</html>
